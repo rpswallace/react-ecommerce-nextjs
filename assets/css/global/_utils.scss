@@ -1,0 +1,4 @@
+.centered-container {
+  @include elastic-centering();
+  padding: 2rem;
+}
