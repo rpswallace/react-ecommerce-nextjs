@@ -13,7 +13,7 @@ import HomePage from '../pages/homepage/homepage'
 export default function Home({ users }) {
   const SEO_TAGS = {
     title: 'NextJS Base Code',
-    shortlink: '',
+    shortLink: '',
     description: '',
     canonical: '',
     og_title: '',
@@ -29,9 +29,9 @@ export default function Home({ users }) {
 
   return (
     <Main className='home-page'>
-      <HeadMetadata seotags={SEO_TAGS} />
+      <HeadMetadata seoTags={SEO_TAGS} />
       <main className='centered-container'>
-        <HomePage/>
+        <HomePage />
       </main>
     </Main>
   )
