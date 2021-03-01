@@ -1,13 +1,14 @@
 // Components
 import HeadMetadata from '../components/shared/HeadMetadata'
 import Main from '../components/layouts/Main'
-import Hero from '../components/shared/Hero'
-import TextBlock from '../components/shared/TextBlock'
-import UserList from '../components/user-list'
-import ModalExample from '../components/modal-example'
+// import Hero from '../components/shared/Hero'
+// import TextBlock from '../components/shared/TextBlock'
+// import UserList from '../components/user-list'
+// import ModalExample from '../components/modal-example'
 
 // Utils
 import API from '../utils/api'
+import HomePage from '../pages/homepage/homepage'
 
 export default function Home({ users }) {
   const SEO_TAGS = {
@@ -29,11 +30,8 @@ export default function Home({ users }) {
   return (
     <Main className='home-page'>
       <HeadMetadata seotags={SEO_TAGS} />
-      <Hero />
       <main className='centered-container'>
-        <UserList users={users} />
-        <TextBlock title='Text Block Example' />
-        <ModalExample />
+        <HomePage/>
       </main>
     </Main>
   )
