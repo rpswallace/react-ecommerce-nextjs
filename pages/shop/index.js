@@ -36,7 +36,7 @@ class ShopPage extends React.Component {
     return (
       <Main className={styles.shop_page}>
         <HeadMetadata seoTags={SEO_TAGS} />
-        <main className='centered-container'>
+        <main>
           {collections.map(({ id, ...otherCollectionProps }) => (
             <CollectionPreview key={id} {...otherCollectionProps} />
           ))}

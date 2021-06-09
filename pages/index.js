@@ -26,7 +26,7 @@ export default function Home({ users }) {
   return (
     <Main className='home-page'>
       <HeadMetadata seoTags={SEO_TAGS} />
-      <main className='centered-container'>
+      <main>
         <HomePage />
       </main>
     </Main>
