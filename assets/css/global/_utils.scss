@@ -2,3 +2,12 @@
   @include elastic-centering();
   padding: 2rem;
 }
+
+body {
+  padding: 20px 60px;
+}
+
+a {
+  text-decoration: none;
+  color: $color-black;
+}

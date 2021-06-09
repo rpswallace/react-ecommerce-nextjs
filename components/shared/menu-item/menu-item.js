@@ -1,13 +1,16 @@
-// import { urlObjectKeys } from 'next/dist/next-server/lib/utils'
 import React from 'react'
+import { withRouter } from 'next/router'
 
 import styles from './menu-item.module.scss'
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, router, linkUrl }) => {
   return (
-    <div className={`${styles['menu-item']} ${styles[size]}`}>
+    <div
+      className={`${styles.menu_item} ${styles.size}`}
+      onClick={() => router.push({pathname: linkUrl})}
+    >
       <div
-        className={`${styles['background-image']}`}
+        className={styles.background_image}
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
@@ -20,4 +23,4 @@ const MenuItem = ({ title, imageUrl, size }) => {
   )
 }
 
-export default MenuItem
+export default withRouter(MenuItem)

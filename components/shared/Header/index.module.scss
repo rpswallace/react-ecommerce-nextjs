@@ -1,20 +1,27 @@
-@import '/assets/css/scss-utils/utils';
+// @import '/assets/css/scss-utils/utils';
 
-.header-wrapper {
-  position: relative;
-  background-color: $color-limed-spruce;
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
 
-  .inner-wrapper {
+  .logo_container {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+  }
+
+  .options {
+    width: 50%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 10rem;
+    justify-content: flex-end;
 
-    h1 {
-      font-size: 4rem;
-      color: $color-white;
-      margin: 0;
-      padding: 0;
+    .option {
+      padding: 10px 15px;
     }
   }
 }

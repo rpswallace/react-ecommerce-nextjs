@@ -1,10 +1,6 @@
 // Components
 import HeadMetadata from '../components/shared/HeadMetadata'
 import Main from '../components/layouts/Main'
-// import Hero from '../components/shared/Hero'
-// import TextBlock from '../components/shared/TextBlock'
-// import UserList from '../components/user-list'
-// import ModalExample from '../components/modal-example'
 
 // Utils
 import API from '../utils/api'
@@ -12,7 +8,7 @@ import HomePage from '../pages/homepage/homepage'
 
 export default function Home({ users }) {
   const SEO_TAGS = {
-    title: 'NextJS Base Code',
+    title: 'NextJS - E-Commerce - HOMEPAGE',
     shortLink: '',
     description: '',
     canonical: '',
