@@ -1,10 +1,10 @@
 // Components
-import HeadMetadata from '../components/shared/HeadMetadata'
 import Main from '../components/layouts/Main'
+import HeadMetadata from '../components/shared/HeadMetadata'
+import HomePage from '../pages/homepage/homepage'
 
 // Utils
 import API from '../utils/api'
-import HomePage from '../pages/homepage/homepage'
 
 export default function Home({ users }) {
   const SEO_TAGS = {
