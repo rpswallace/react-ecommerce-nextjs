@@ -3,6 +3,7 @@ import React from 'react';
 import HeadMetadata from '../../components/shared/HeadMetadata'
 import Main from '../../components/layouts/Main'
 import SignIn from '../../components/shared/sign-in/sign-in'
+import SignUp from '../../components/shared/sign-up/sign-up'
 
 import styles from '../signin/index.module.scss'
 
@@ -23,10 +24,11 @@ const SignInSignUpPage = () => {
     twitter_description: '',
   }
   return (
-    <Main className={styles.shop_page}>
+    <Main>
       <HeadMetadata seoTags={SEO_TAGS} />
-      <main>
+      <main className={styles.sign_in}>
         <SignIn/>
+        <SignUp/>
       </main>
     </Main>
   )

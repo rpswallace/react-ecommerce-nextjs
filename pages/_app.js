@@ -2,7 +2,7 @@ import App from 'next/app';
 import TagManager from 'react-gtm-module'
 import ReactGA from 'react-ga'
 import { AnimatePresence } from 'framer-motion'
-import { auth } from '../firebase/firebase.utils';
+import { auth, createUserProfileDocument } from '../firebase/firebase.utils';
 import Header from '../components/shared/Header'
 
 // import Router from 'next/router';
@@ -28,7 +28,7 @@ class MyApp extends App {
     }
   }
 
-  unsubscribeFromAuth = null
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
     if (tagManagerArgs.gtmId) {
@@ -40,11 +40,24 @@ class MyApp extends App {
       ReactGA.pageview(window.location.pathname + window.location.search)
     }
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({
-        currentUser: user
-      })
-    })
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+
+          console.log(this.state);
+        });
+      }
+
+      this.setState({ currentUser: userAuth });
+    });
   }
 
   componentWillUnmount() {
