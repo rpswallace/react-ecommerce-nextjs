@@ -51,8 +51,6 @@ class MyApp extends App {
               ...snapShot.data()
             }
           });
-
-          console.log(this.state);
         });
       }
 
