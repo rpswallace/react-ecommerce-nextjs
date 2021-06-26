@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { useRouter } from 'next/router'
 
 import HeadMetadata from '../../components/shared/HeadMetadata'
 import Main from '../../components/layouts/Main'
@@ -7,7 +9,13 @@ import SignUp from '../../components/shared/sign-up/sign-up'
 
 import styles from '../signin/index.module.scss'
 
-const SignInSignUpPage = () => {
+const SignInSignUpPage = ({currentUser}) => {
+
+  const router = useRouter()
+  if (currentUser) {
+    router.push('/')
+  }
+
   const SEO_TAGS = {
     title: 'NextJS - E-Commerce - SHOP',
     shortLink: '',
@@ -34,4 +42,8 @@ const SignInSignUpPage = () => {
   )
 }
 
-export default SignInSignUpPage;
+const mapStateToProps  = ({ user }) => ({
+  currentUser: user.currentUser
+})
+
+export default connect(mapStateToProps)(SignInSignUpPage);
