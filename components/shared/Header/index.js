@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { auth } from '../../../firebase/firebase.utils';
+import { connect } from 'react-redux'
+import { auth } from '../../../firebase/firebase.utils'
 
 // https://nextjs.org/docs/basic-features/image-optimization
 // https://nextjs.org/docs/api-reference/next/image
@@ -47,4 +48,8 @@ const Header = ({currentUser}) => {
   )
 }
 
-export default Header
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);

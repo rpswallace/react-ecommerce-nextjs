@@ -1,12 +1,20 @@
 import App from 'next/app';
-import TagManager from 'react-gtm-module'
-import ReactGA from 'react-ga'
-import { AnimatePresence } from 'framer-motion'
+
+// Firebase
 import { auth, createUserProfileDocument } from '../firebase/firebase.utils';
+
+// Custom Components
 import Header from '../components/shared/Header'
 
-// import Router from 'next/router';
-// import UserContext from '../components/UserContext';
+// Redux
+import { Provider } from 'react-redux';
+import { createWrapper } from 'next-redux-wrapper';
+import store from '../redux/store';
+import { setCurrentUser } from '../redux/user/user-action';
+
+// SEO
+import TagManager from 'react-gtm-module'
+import ReactGA from 'react-ga'
 
 // Global CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -31,6 +39,7 @@ class MyApp extends App {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+
     if (tagManagerArgs.gtmId) {
       TagManager.initialize(tagManagerArgs)
     }
@@ -65,12 +74,16 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
     return (
-      <AnimatePresence exitBeforeEnter>
-        <Header currentUser={this.state.currentUser}/>
+      <Provider store={store}>
+        <Header/>
         <Component {...pageProps} key={router.route}/>
-      </AnimatePresence>
+      </Provider>
     );
   }
 }
 
-export default MyApp
+// https://www.youtube.com/watch?v=UXMGGI3TSs4
+const makeStore = () => store;
+const wrapper = createWrapper(makeStore);
+
+export default wrapper.withRedux(MyApp);
