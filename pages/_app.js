@@ -1,3 +1,4 @@
+// NextJS
 import App from 'next/app';
 
 // Firebase
@@ -28,13 +29,6 @@ const tagManagerArgs = {
 // Google Analytics ID
 const gaID = ''
 class MyApp extends App {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentUser: null
-    }
-  }
 
   unsubscribeFromAuth = null;
 
@@ -54,16 +48,15 @@ class MyApp extends App {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapShot => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
           });
         });
       }
 
-      this.setState({ currentUser: userAuth });
+      // https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow
+      store.dispatch({ type: 'SET_CURRENT_USER', payload: userAuth })
     });
   }
 
