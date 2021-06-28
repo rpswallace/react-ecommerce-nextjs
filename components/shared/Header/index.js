@@ -5,13 +5,14 @@ import { auth } from '../../../firebase/firebase.utils'
 // https://nextjs.org/docs/basic-features/image-optimization
 // https://nextjs.org/docs/api-reference/next/image
 import Image from 'next/image'
+import CartIcon from '../cart-icon/cart-icon'
+import CartDropdown from '../cart-dropdown/cart-dropdown'
 import styles from './index.module.scss'
 // import Nav from '../Nav/index'
 
-const Header = ({currentUser}) => {
+const Header = ({currentUser, hidden}) => {
   return (
     <header className={styles.header}>
-      {/*<Nav className={styles['inner-wrapper']} />*/}
       <Link href="/">
         <a className={styles.logo_container}>
           <Image
@@ -43,13 +44,21 @@ const Header = ({currentUser}) => {
             <a className={styles.option}>SIGN IN</a>
           </Link>
         }
+        <CartIcon/>
       </div>
+      {
+        hidden ?
+        null
+        :
+        <CartDropdown/>
+      }
     </header>
   )
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
+  currentUser,
+  hidden
 });
 
 export default connect(mapStateToProps)(Header);

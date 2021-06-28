@@ -11,7 +11,7 @@ import Header from '../components/shared/Header'
 import { Provider } from 'react-redux';
 import { createWrapper } from 'next-redux-wrapper';
 import store from '../redux/store';
-import { setCurrentUser } from '../redux/user/user-action';
+import { setCurrentUser } from '../redux/user/user-actions';
 
 // SEO
 import TagManager from 'react-gtm-module'
